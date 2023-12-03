@@ -2,11 +2,15 @@ import XCTest
 @testable import SpeechTranscriber
 
 final class SpeechTranscriberTests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
+    func testOnDeviceSpeechTranscriber() async throws {
+        let transcriber = try OnDeviceSpeechTranscriber()
+        guard let url = Bundle.module.url(forResource: "transcribing", withExtension: "mp3") else {
+            fatalError("failed to load audio")
+        }
 
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+        let result = try await transcriber.transcribe(url: url)
+        
+        XCTAssertFalse(result.isEmpty)
+        print(result)
     }
 }

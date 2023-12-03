@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "SpeechTranscriber",
-    platforms: [.iOS(.v13)],
+    platforms: [.iOS(.v13), .macOS(.v10_15)],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
@@ -19,6 +19,9 @@ let package = Package(
             name: "SpeechTranscriber"),
         .testTarget(
             name: "SpeechTranscriberTests",
-            dependencies: ["SpeechTranscriber"]),
+            dependencies: ["SpeechTranscriber"],
+        resources: [
+            .copy("transcribing.mp3")
+        ]),
     ]
 )
