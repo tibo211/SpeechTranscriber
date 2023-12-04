@@ -35,7 +35,7 @@ public final class OnDeviceSpeechTranscriber: SpeechTranscriber {
         speeches = []
 
         let request = SFSpeechURLRecognitionRequest(url: url)
-        request.requiresOnDeviceRecognition = true
+        // request.requiresOnDeviceRecognition = true
         request.shouldReportPartialResults = true
         if #available(macOS 13, iOS 16, *) {
             request.addsPunctuation = true
