@@ -58,7 +58,7 @@ public final class OnDeviceSpeechTranscriber: SpeechTranscriber {
                     segments: transcription.segments.compactMap { segment in
                         let range = Range(segment.substringRange,
                                           in: transcription.formattedString)
-                        guard let range else {
+                        guard let range, segment.duration > 0 else {
                             return nil
                         }
                         return SpeechSegment(
